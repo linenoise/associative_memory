@@ -4,3 +4,5 @@ gem "rake"
 gem "hoe"
 gem "newgem"
 gem "simplecov"
+gem "guard"
+gem 'guard-rspec'
