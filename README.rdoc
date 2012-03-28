@@ -2,8 +2,8 @@
 
 This is a ruby gem that implements a binary, bidirectional associative memory neural network for use in categorization systems.
 
-* http://dann.stayskal.com/software/rubygems/
-* http://github.com/danndalf/associative_memory/
+* Support: http://dann.stayskal.com/software/rubygems
+* Source code: http://github.com/danndalf/associative_memory
 
 == DESCRIPTION:
 
