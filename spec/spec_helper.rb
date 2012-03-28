@@ -1,10 +1,7 @@
-begin
-  require 'rspec'
-rescue LoadError
-  require 'rubygems' unless ENV['NO_RUBYGEMS']
-  gem 'rspec'
-  require 'rspec'
-end
+#encoding: utf-8
 
-$:.unshift(File.dirname(__FILE__) + '/../lib')
+require 'simplecov'
+SimpleCov.start
+
 require 'associative_memory'
+require 'rspec'
