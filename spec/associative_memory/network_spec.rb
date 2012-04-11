@@ -42,23 +42,30 @@ describe AssociativeMemory::Network do
 		  end
 		end
 
+		describe "converging a network" do
+	  	before do
+		  	@network = AssociativeMemory.new
+		  	training_data.each do |pair|
+		  		@network.learn(pair[:input], pair[:output])
+		  	end
+		  end
+			it "should rebuild all available output data from learned input data" do
+				training_data.each do |pair|
+					@network.converge(pair[:input], [1,1,1,1])
+					@network.output.should == pair[:output]
+				end
+			end
+			it "should rebuild all available input data from learned output data"
+		end
+
 	end
 
-	# AI::Memory::Associative::Bidirectional - An AI memory handler based on neural networks
-# =head1 SYNOPSIS
-#     print "Loading input sets... ";
-#     foreach my $input (@$inputs){
-#       $memory->learn($$input[0],$$input[1]);
-#     }
-#     print "done.\n";
-#     print "Final weight matrix:\n".$memory->table('weights')."\n";
 #     foreach my $test (@$tests){
 #       if(my $steps = $memory->converge($$test[0],$$test[1])){
 #         print "Stabilized to ".$memory->vector('X').', '.$memory->vector(Y).
 #             " after ".($steps)." iteration".($steps==1?'':'s')."\n";
 #       }
 #     }
-# =cut
 
 
 
