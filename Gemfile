@@ -6,4 +6,3 @@ gem "newgem"
 gem "simplecov"
 gem "guard"
 gem 'guard-rspec'
-gem 'noexec'
