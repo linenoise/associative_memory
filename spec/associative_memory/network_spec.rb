@@ -2,13 +2,11 @@ require 'spec_helper'
 
 describe AssociativeMemory::Network do
   context "when hetero-associative," do
-  	let(:training_data) {
-			[
-	  		{:input => [1, 0, 1, 0, 1, 0], :output => [1, 1, 0, 0]},
-	  		{:input => [1, 1, 1, 0, 0, 0], :output => [0, 1, 1, 0]},
-	  		{:input => [0, 1, 0, 1, 0, 1], :output => [0, 0, 1, 1]}
-	  	]  	
-	 	}
+  	let(:training_data) {[
+	  		{:input => [1, 0, 1, 0, 1, 0], :output => [1, 1, 0, 0], :converged_output => [5, 7, -5, -7], :converged_input => [4, -4, 4, -4, 4, -4] },
+	  		{:input => [1, 1, 1, 0, 0, 0], :output => [0, 1, 1, 0], :converged_output => [-1, 5, 1, -5], :converged_input => [2, 2, 2, -2, -2, -2] },
+	  		{:input => [0, 1, 0, 1, 0, 1], :output => [0, 0, 1, 1], :converged_output => [-5, -7, 5, 7], :converged_input => [-4, 4, -4, 4, -4, 4] }
+	  	]}
 	  describe "a new neural network" do
 	  	before do
 		  	@network = AssociativeMemory.new
@@ -49,12 +47,14 @@ describe AssociativeMemory::Network do
 		  end
 			it "should rebuild all available output data from learned input data" do
 				training_data.each do |pair|
-					@network.converge_input(pair[:input]).should == pair[:output]
+					@network.converge_input(pair[:input]).should == pair[:converged_output]
+					@network.converge_and_threshold_input(pair[:input]).should == pair[:output]
 				end
 			end
 			it "should rebuild all available input data from learned output data" do
 				training_data.each do |pair|
-					@network.converge_output(pair[:output]).should == pair[:input]
+					@network.converge_output(pair[:output]).should == pair[:converged_input]
+					@network.converge_and_threshold_output(pair[:output]).should == pair[:input]
 				end
 			end
 		end
