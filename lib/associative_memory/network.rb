@@ -37,12 +37,20 @@ module AssociativeMemory
 
     def converge_input(input)
       ### Multiply the input vector by the convergence matrix
-      input_vector = Matrix.row_vector(input)
-      convergence = Matrix.rows(self.matrix)
-      output_vector = input_vector * convergence
+      output_vector = Matrix.row_vector(input) * Matrix.rows(self.matrix)
 
       ### Threshold and return the resulting output vector
       return output_vector.row(0).to_a.map do |element|
+        if element > 0 then 1 else 0 end
+      end
+    end
+
+    def converge_output(output)
+      ### Multiply the output vector by the convergence matrix
+      input_vector = Matrix.row_vector(output) * Matrix.rows(self.matrix).transpose
+
+      ### Threshold and return the resulting output vector
+      return input_vector.row(0).to_a.map do |element|
         if element > 0 then 1 else 0 end
       end
     end
