@@ -41,6 +41,10 @@ describe AssociativeMemory do
 		it "should reconstruct generalizations from things not explicitly trained" do
 			@animals.describe([:fish]).should include(:tail)
 		end
+		it "should dynamically reassociate patterns from existing data when further trained" do
+			@animals.associate([:jumping], [:humans, :rats])
+			@animals.describe([:humans]).should include(:jumping)
+		end
 	end
 
 	describe "data structure inspection" do
