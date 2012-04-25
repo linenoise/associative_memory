@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe AssociativeMemory::Network do
-  context "when hetero-associative," do
+  context "when hetero-associative (bidirectional)," do
   	let(:training_data) {[
 	  		{:input => [1, 0, 1, 0, 1, 0], :output => [1, 1, 0, 0], :converged_output => [5, 7, -5, -7], :converged_input => [4, -4, 4, -4, 4, -4] },
 	  		{:input => [1, 1, 1, 0, 0, 0], :output => [0, 1, 1, 0], :converged_output => [-1, 5, 1, -5], :converged_input => [2, 2, 2, -2, -2, -2] },

@@ -1,4 +1,8 @@
+
+=== 0.1 2012-04-24
+
+* Completed heteroassociative neural network implementation
+
 === 0.0.1 2012-03-27
 
-* 1 major enhancement:
-  * Initial release
+* Initial development work, module layout, starting on heteroassociative network
