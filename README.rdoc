@@ -6,7 +6,7 @@ http://dann.stayskal.com/software/associative_memory
 
 This is a ruby gem that lets you implement categorization systems with ease.
 
-**Associative memory neural networks** make it easy to identify probable patterns between sets of named data points.  It can be cumbersome to interface with the neural network directly, however, as a typical convergence matrix has a fixed size and training period, which limits how useful they can be to an integrated system.
+Associative memory neural networks make it easy to identify probable patterns between sets of named data points.  It can be cumbersome to interface with the neural network directly, however, as a typical convergence matrix has a fixed size and training period, which limits how useful they can be to an integrated system.
 
 associative_memory simplifies these kind of machine learning models by offering dynamically configurable input and output sets, and a convergence model that adapts to the inputs you give it each time.  This allows your code to concentrate on extrapolating meaningful patterns rather than juggling bitmasks and transposition matrices.
 
@@ -82,7 +82,7 @@ If you would like to help maintain or improve this gem, I welcome your patches. 
 
 Once guard starts, it will run through the full test suite.  After any changes are made to the libraries or specs, guard will re-run the relevant tests.  To re-run the full test suite, press enter at tie `> ` prompt in guard.  
 
-After each test run, [simplecov](https://github.com/colszowka/simplecov) will generate a test coverage report in `coverage/index.html`.  This should show 100% coverage across all files when running the full test suite.
+After each test run, simplecov will generate a test coverage report in `coverage/index.html`.  This should show 100% coverage across all files when running the full test suite.
 
 If you would like to patch this gem:
 
@@ -95,13 +95,15 @@ If you would like to patch this gem:
 
 This will help me integrate your patch as quickly and reliably as possible.
 
-If you'd rather report a bug, please [open an issue on github](https://github.com/danndalf/associative_memory/issues).
+If you'd rather report a bug, please open an issue on github.
 
 == Resources
 
 * Support: http://dann.stayskal.com/software/associative_memory
 
-* Source code: http://github.com/danndalf/associative_memory
+* Source: http://github.com/danndalf/associative_memory
+
+* Bug Tracker: https://github.com/danndalf/associative_memory/issues
 
 == License
 
