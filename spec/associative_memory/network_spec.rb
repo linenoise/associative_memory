@@ -9,7 +9,7 @@ describe AssociativeMemory::Network do
 		]}
 		describe "a new neural network" do
 			before do
-				@network = AssociativeMemory.new
+				@network = AssociativeMemory::Network.new
 			end
 			it "should be a kind of associative memory network" do
 				@network.should be_a_kind_of(AssociativeMemory::Network)
@@ -24,7 +24,7 @@ describe AssociativeMemory::Network do
 
 		describe "training a network" do
 			before do
-				@network = AssociativeMemory.new
+				@network = AssociativeMemory::Network.new
 			end
 			it "should build a valid convergence matrix from a single data point" do
 				@network.learn(training_data[0][:input], training_data[0][:output])
@@ -40,7 +40,7 @@ describe AssociativeMemory::Network do
 
 		describe "converging a network" do
 			before do
-				@network = AssociativeMemory.new
+				@network = AssociativeMemory::Network.new
 				training_data.each do |pair|
 					@network.learn(pair[:input], pair[:output])
 				end

@@ -5,7 +5,8 @@ module AssociativeMemory
 
 	attr_accessor :matrix, :input, :output
 
-	def initialize(options)
+
+	def initialize(options={})
 		@matrix = []
 	end
 
