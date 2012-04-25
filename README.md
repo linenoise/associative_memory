@@ -118,13 +118,13 @@ Otherwise:
 
 If you would like to help maintain or improve this gem, I welcome your patches. The build environment of this gem is streamlined for [Test-driven development](https://en.wikipedia.org/wiki/Test-driven_development) using bundler, rvm, rspec, and guard.  To get it setup, you'll need to have [Ruby Version Manager (RVM)](http://beginrescueend.com/) installed, then do the following:
 
-		$ git clone git@github.com:danndalf/associative_memory
-		$ cd associative_memory
-		  # ...and accept the .rvmrc
-		  # have RVM build ruby 1.9 if necessary
-		$ gem install bundler
-		$ bundle install
-		$ bundle exec guard start
+	$ git clone git@github.com:danndalf/associative_memory
+	$ cd associative_memory
+	  # ...and accept the .rvmrc
+	  # have RVM build ruby 1.9 if necessary
+	$ gem install bundler
+	$ bundle install
+	$ bundle exec guard start
 
 Once guard starts, it will run through the full test suite.  After any changes are made to the libraries or specs, guard will re-run the relevant tests.  To re-run the full test suite, press enter at tie `> ` prompt in guard.  
 
