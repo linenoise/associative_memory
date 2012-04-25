@@ -2,7 +2,7 @@
 
 This is a ruby gem that lets you implement categorization systems with ease.
 
-**Associative memory neural networks** make it easy to identify probable patterns between sets of named data points.  It can be cumbersome to interface with the neural network directly, however, as a typical convergence matrix has a fixed size and training period, which limits how useful they can be to a larger, integrated system.
+**Associative memory neural networks** make it easy to identify probable patterns between sets of named data points.  It can be cumbersome to interface with the neural network directly, however, as a typical convergence matrix has a fixed size and training period, which limits how useful they can be to an integrated system.
 
 `associative_memory` simplifies these kind of machine learning models by offering dynamically configurable input and output sets, and a convergence model that adapts to the inputs you give it each time.  This allows your code to concentrate on extrapolating meaningful patterns rather than juggling bitmasks and transposition matrices.
 
@@ -45,12 +45,9 @@ Furthermore, it will be able to extrapolate patterns from data not explicitly ta
 If you have more patterns to input, you can do it at any time:
 
 ```ruby
-animals.associate(:jumping).with(:humans, :rats, :cats)
-animals.describe(:humans).should include(:jumping)
-animals.describe(:turtles).should_not include(:jumping)
+@animals.associate([:jumping], [:humans, :rats, :cats])
+@animals.describe([:humans]).should include(:jumping)
 ```
-
-And it will be able to tell you that turtles don't jump.
 
 ### Debugging
 
@@ -62,36 +59,36 @@ Sometimes, you might want to know what in the sam hill is going on in that conve
 puts @animals.pretty_inspect
 ```
 
-		associative_memory object: 29450400
+	associative_memory object: 29450400
 
-		associated_pairs
-		----------------
-		[[:tail, :fur, :legs, :paws], [:cats, :rats]]
-		[[:tail, :fins, :swimming], [:fish]]
-		[[:tail, :shell], [:turtles]]
-		[[:arms, :legs], [:humans]]
-		[[:swimming], [:humans, :rats, :turtles]]
-		[[:running], [:humans, :rats, :cats]]
+	associated_pairs
+	----------------
+	[[:tail, :fur, :legs, :paws], [:cats, :rats]]
+	[[:tail, :fins, :swimming], [:fish]]
+	[[:tail, :shell], [:turtles]]
+	[[:arms, :legs], [:humans]]
+	[[:swimming], [:humans, :rats, :turtles]]
+	[[:running], [:humans, :rats, :cats]]
 
-		input_keyspace
-		--------------
-		[:arms, :fins, :fur, :legs, :paws, :running, :shell, :swimming, :tail]
+	input_keyspace
+	--------------
+	[:arms, :fins, :fur, :legs, :paws, :running, :shell, :swimming, :tail]
 
-		output_keyspace
-		---------------
-		[:cats, :rats, :fish, :humans, :turtles]
+	output_keyspace
+	---------------
+	[:cats, :rats, :fish, :humans, :turtles]
 
-		convergence network
-		-------------------
-		[0, -2, 2, 2, 0]
-		[0, -2, 6, -2, 0]
-		[4, 2, 2, -2, 0]
-		[2, 0, 0, 0, -2]
-		[4, 2, 2, -2, 0]
-		[4, 2, 2, 2, 0]
-		[0, -2, 2, -2, 4]
-		[-2, 0, 4, 0, 2]
-		[0, -2, 2, -6, 0]
+	convergence network
+	-------------------
+	[0, -2, 2, 2, 0]
+	[0, -2, 6, -2, 0]
+	[4, 2, 2, -2, 0]
+	[2, 0, 0, 0, -2]
+	[4, 2, 2, -2, 0]
+	[4, 2, 2, 2, 0]
+	[0, -2, 2, -2, 4]
+	[-2, 0, 4, 0, 2]
+	[0, -2, 2, -6, 0]
 
 
 ## Installation
