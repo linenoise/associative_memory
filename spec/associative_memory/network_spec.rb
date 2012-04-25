@@ -5,9 +5,9 @@ describe AssociativeMemory::Network do
   	let(:training_data) {
 			[
 	  		{:input => [1, 0, 1, 0, 1, 0], :output => [1, 1, 0, 0]},
-	  		{:input => [1, 1, 1, 0, 0, 0], :output => [1, 0, 1, 0]},
+	  		{:input => [1, 1, 1, 0, 0, 0], :output => [1, 0, 0, 0]},
 	  		{:input => [1, 0, 1, 1, 1, 1], :output => [1, 0, 0, 1]},
-	  		{:input => [0, 0, 0, 1, 1, 1], :output => [0, 1, 1, 0]},
+	  		{:input => [0, 0, 0, 1, 1, 1], :output => [0, 1, 1, 1]},
 	  		{:input => [0, 1, 0, 1, 0, 1], :output => [0, 0, 1, 1]}
 	  	]  	
 	 	}
@@ -38,7 +38,7 @@ describe AssociativeMemory::Network do
 		  	training_data.each do |pair|
 		  		@network.learn(pair[:input], pair[:output])
 		  	end
-		  	@network.matrix.should == [[5, -1, -3, -1], [-1, -3, 3, 1], [5, -1, -3, -1], [-3, -1, 1, 3], [1, 3, -3, -1], [-3, -1, 1, 3]]
+		  	@network.matrix.should == [[5, -1, -5, -3], [-1, -3, 1, -1], [5, -1, -5, -3], [-3, -1, 3, 5], [1, 3, -1, 1], [-3, -1, 3, 5]]
 		  end
 		end
 
@@ -51,8 +51,7 @@ describe AssociativeMemory::Network do
 		  end
 			it "should rebuild all available output data from learned input data" do
 				training_data.each do |pair|
-					@network.converge(pair[:input], [1,1,1,1])
-					@network.output.should == pair[:output]
+					@network.converge_input(pair[:input]).should == pair[:output]
 				end
 			end
 			it "should rebuild all available input data from learned output data"
