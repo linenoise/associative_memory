@@ -1,63 +1,63 @@
 require 'matrix'
 
 module AssociativeMemory
-  class Network
+	class Network
 
-  	attr_accessor :matrix, :input, :output
+	attr_accessor :matrix, :input, :output
 
-  	def initialize(options)
-  		@matrix = []
-      @input = []
-      @output = []
-  	end
+	def initialize(options)
+		@matrix = []
+	end
 
-  	def empty?
-  		self.matrix.length == 0
-  	end
+	def empty?
+		self.matrix.length == 0
+	end
 
-  	def valid?
-      self.matrix && self.input && self.output
-  	end
+	def valid?
+		self.matrix
+	end
+	
+	def learn(input, output)
+		input_buffer = []
+		output_buffer = []
+		input.each_with_index do |scalar, index|
+			input_buffer[index] = 2 * scalar - 1
+		end
+		output.each_with_index do |scalar, index|
+			output_buffer[index] = 2 * scalar - 1
+		end
+		input.each_with_index do |input_scalar, input_index|
+			output.each_with_index do |output_scalar, output_index|
+				self.matrix[input_index] ||= []
+				self.matrix[input_index][output_index] ||= 0
+				self.matrix[input_index][output_index] += input_buffer[input_index] * output_buffer[output_index]
+			end
+		end
+	end
 
-    def learn(input, output)
-      input.each_with_index do |scalar, index|
-        self.input[index] = 2 * scalar - 1
-      end
-      output.each_with_index do |scalar, index|
-        self.output[index] = 2 * scalar - 1
-      end
-      input.each_with_index do |input_scalar, input_index|
-        output.each_with_index do |output_scalar, output_index|
-          self.matrix[input_index] ||= []
-          self.matrix[input_index][output_index] ||= 0
-          self.matrix[input_index][output_index] += self.input[input_index] * self.output[output_index]
-        end
-      end
-    end
+	def converge_input(input)
+		output_vector = Matrix.row_vector(input) * Matrix.rows(self.matrix)
+		return output_vector.row(0).to_a
+	end
 
-    def converge_input(input)
-      output_vector = Matrix.row_vector(input) * Matrix.rows(self.matrix)
-      return output_vector.row(0).to_a
-    end
+	def converge_and_threshold_input(input)
+		threshold(converge_input(input))
+	end
 
-    def converge_and_threshold_input(input)
-      threshold(converge_input(input))
-    end
+	def converge_output(output)
+		input_vector = Matrix.row_vector(output) * Matrix.rows(self.matrix).transpose
+		return input_vector.row(0).to_a
+	end
 
-    def converge_output(output)
-      input_vector = Matrix.row_vector(output) * Matrix.rows(self.matrix).transpose
-      return input_vector.row(0).to_a
-    end
+	def converge_and_threshold_output(output)
+		threshold(converge_output(output))
+	end
 
-    def converge_and_threshold_output(output)
-      threshold(converge_output(output))
-    end
+	def threshold(vector)
+		vector.map do |element|
+			if element > 0 then 1 else 0 end
+		end
+	end
 
-    def threshold(vector)
-      vector.map do |element|
-        if element > 0 then 1 else 0 end
-      end
-    end
-
-  end 
+  end
 end
