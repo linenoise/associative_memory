@@ -6,7 +6,7 @@ describe AssociativeMemory do
 		AssociativeMemory::VERSION.should match(/\d+\.\d+/)
 	end
 
-	describe "providing some assoiation pairs" do
+	describe "providing some association pairs" do
 		before do
 			@animals = AssociativeMemory.new
 			@animals.associate([:tail, :shell], [:turtles])
@@ -41,7 +41,7 @@ describe AssociativeMemory do
 		it "should reconstruct generalizations from things not explicitly trained" do
 			@animals.describe([:fish]).should include(:tail)
 		end
-		it "should dynamically reassociate patterns from existing data when further trained" do
+		it "should dynamically re-associate patterns from existing data when further trained" do
 			@animals.associate([:jumping], [:humans, :rats])
 			@animals.describe([:humans]).should include(:jumping)
 		end

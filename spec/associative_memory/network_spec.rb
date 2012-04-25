@@ -33,7 +33,7 @@ describe AssociativeMemory::Network do
 			@network.learn(training_data[0][:input], training_data[0][:output])
 			@network.matrix.should == [[1, 1, -1, -1], [-1, -1, 1, 1], [1, 1, -1, -1], [-1, -1, 1, 1], [1, 1, -1, -1], [-1, -1, 1, 1]]
 		end
-		it "should build a valud convergence matrix from all data" do
+		it "should build a valid convergence matrix from all data" do
 			training_data.each do |pair|
 				@network.learn(pair[:input], pair[:output])
 			end
