@@ -1,4 +1,8 @@
 
+=== 0.2 2012-04-24
+
+* Completed named interface set for hereoassociative network implementation
+
 === 0.1 2012-04-24
 
 * Completed heteroassociative neural network implementation
