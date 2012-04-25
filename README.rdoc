@@ -1,8 +1,8 @@
-# Associative Memory
+= Associative Memory
 
 http://dann.stayskal.com/software/associative_memory
 
-## Description
+== Description
 
 This is a ruby gem that lets you implement categorization systems with ease.
 
@@ -12,73 +12,73 @@ associative_memory simplifies these kind of machine learning models by offering 
 
 Under the hood, associative_memory implements a hetero-associative recurrent neural network designed according to Kosko's landmark paper (http://sipi.usc.edu/~kosko/BAM.pdf) establishing the model.  The model then dynamically rebuilds and adapts this network to accomodate new inputs as necessary.
 
-## Synopsis
+== Synopsis
 
 First, you'll want to tell `associative_memory` what you know about the set of things you're dealing with:
 
-	require 'associative_memory'
-	@animals = AssociativeMemory.new
+  require 'associative_memory'
+  @animals = AssociativeMemory.new
 
-	@animals.associate([:tail, :fur, :legs, :paws], [:cats, :rats])
-	@animals.associate([:fins, :swimming], 			[:fish])
-	@animals.associate([:tail, :shell], 			[:turtles])
-	@animals.associate([:arms, :legs], 				[:humans])
-	@animals.associate([:swimming], 				[:humans, :rats, :turtles])
-	@animals.associate([:running], 					[:humans, :rats, :cats])
+  @animals.associate([:tail, :fur, :legs, :paws], [:cats, :rats])
+  @animals.associate([:fins, :swimming],      [:fish])
+  @animals.associate([:tail, :shell],       [:turtles])
+  @animals.associate([:arms, :legs],        [:humans])
+  @animals.associate([:swimming],         [:humans, :rats, :turtles])
+  @animals.associate([:running],          [:humans, :rats, :cats])
 
 Once you've done that, you can start asking it questions about patterns you've told it about:
 
-	running_things = @animals.describe([:running])
-	[:cats, :rats, :humans].each do |thing|
-		running_things.should include(thing)
-	end
-	@animals.describe([:humans]).should == [:arms, :legs, :running, :swimming]
-	@animals.describe([:swimming]).should == [:rats, :fish, :humans, :turtles]
-	@animals.describe([:tail]).should == [:cats, :rats, :fish, :turtles]
+  running_things = @animals.describe([:running])
+  [:cats, :rats, :humans].each do |thing|
+    running_things.should include(thing)
+  end
+  @animals.describe([:humans]).should == [:arms, :legs, :running, :swimming]
+  @animals.describe([:swimming]).should == [:rats, :fish, :humans, :turtles]
+  @animals.describe([:tail]).should == [:cats, :rats, :fish, :turtles]
 
 Furthermore, it will be able to extrapolate patterns from data not explicitly taught:
 
-	@animals.describe([:fish]).should include(:tail)
+  @animals.describe([:fish]).should include(:tail)
 
 If you have more patterns to input, you can do it at any time:
 
-	@animals.associate([:jumping], [:humans, :rats, :cats])
-	@animals.describe([:humans]).should include(:jumping)
+  @animals.associate([:jumping], [:humans, :rats, :cats])
+  @animals.describe([:humans]).should include(:jumping)
 
-## Installation
+== Installation
 
 When using RVM:
 
-	$ gem install associative_memory
+  $ gem install associative_memory
 
 When using Bundler:
 
-	# Add to your Gemfile
-	gem "associative_memory"
+  # Add to your Gemfile
+  gem "associative_memory"
 
-	# Then install through Bundler
-	$ bundle install
+  # Then install through Bundler
+  $ bundle install
 
 Otherwise:
 
-	$ sudo gem install associative_memory
+  $ sudo gem install associative_memory
 
-## TODO
+== TODO
 
 * Implement auto-associative neural network model (v.0.3)
 * Streamline network class with Matrix rather than Array
 
-## Maintenance
+== Maintenance
 
 If you would like to help maintain or improve this gem, I welcome your patches. The build environment of this gem is streamlined for test-driven development using bundler, rvm, rspec, and guard.  To get it setup, you'll need to have Ruby Version Manager (http://beginrescueend.com/) installed, then do the following:
 
-	$ git clone git@github.com:danndalf/associative_memory
-	$ cd associative_memory
-	  # ...and accept the .rvmrc
-	  # have RVM build ruby 1.9 if necessary
-	$ gem install bundler
-	$ bundle install
-	$ bundle exec guard start
+  $ git clone git@github.com:danndalf/associative_memory
+  $ cd associative_memory
+    # ...and accept the .rvmrc
+    # have RVM build ruby 1.9 if necessary
+  $ gem install bundler
+  $ bundle install
+  $ bundle exec guard start
 
 Once guard starts, it will run through the full test suite.  After any changes are made to the libraries or specs, guard will re-run the relevant tests.  To re-run the full test suite, press enter at tie `> ` prompt in guard.  
 
@@ -97,13 +97,13 @@ This will help me integrate your patch as quickly and reliably as possible.
 
 If you'd rather report a bug, please [open an issue on github](https://github.com/danndalf/associative_memory/issues).
 
-## Resources
+== Resources
 
 * Support: http://dann.stayskal.com/software/associative_memory
 
 * Source code: http://github.com/danndalf/associative_memory
 
-## License
+== License
 
 This module is available under The MIT License.
 
