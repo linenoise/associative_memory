@@ -3,7 +3,7 @@ require 'spec_helper'
 describe AssociativeMemory do
 	
 	it "should have a valid version number" do
-		AssociativeMemory::VERSION.should match(/\d+\.\d+/)
+		AssociativeMemory::VERSION.should match(/\d+\.\d+\.\d+/)
 	end
 
 	describe "providing some association pairs" do
