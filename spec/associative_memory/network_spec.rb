@@ -48,13 +48,13 @@ describe AssociativeMemory::Network do
 			it "should rebuild all available output data from learned input data" do
 				training_data.each do |pair|
 					@network.converge_input(pair[:input]).should == pair[:converged_output]
-					@network.converge_and_threshold_input(pair[:input]).should == pair[:output]
+					@network.converge_and_bitmask_input(pair[:input]).should == pair[:output]
 				end
 			end
 			it "should rebuild all available input data from learned output data" do
 				training_data.each do |pair|
 					@network.converge_output(pair[:output]).should == pair[:converged_input]
-					@network.converge_and_threshold_output(pair[:output]).should == pair[:input]
+					@network.converge_and_bitmask_output(pair[:output]).should == pair[:input]
 				end
 			end
 		end

@@ -40,8 +40,8 @@ module AssociativeMemory
 		return output_vector.row(0).to_a
 	end
 
-	def converge_and_threshold_input(input)
-		threshold(converge_input(input))
+	def converge_and_bitmask_input(input)
+		bitmask(converge_input(input))
 	end
 
 	def converge_output(output)
@@ -49,11 +49,11 @@ module AssociativeMemory
 		return input_vector.row(0).to_a
 	end
 
-	def converge_and_threshold_output(output)
-		threshold(converge_output(output))
+	def converge_and_bitmask_output(output)
+		bitmask(converge_output(output))
 	end
 
-	def threshold(vector)
+	def bitmask(vector)
 		vector.map do |element|
 			if element > 0 then 1 else 0 end
 		end
