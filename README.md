@@ -1,41 +1,57 @@
-associative_memory
+Associative Memory
 ==================
 
-This is a ruby gem that implements a binary, bidirectional associative memory neural network for use in categorization systems.
+`associative_memory` lets you implement categorization systems with ease.
 
-* Support: http://dann.stayskal.com/software/rubygems
-* Source code: http://github.com/danndalf/associative_memory
+Associative memory neural networks make it easy to identify probable patterns between sets of named data points.  It can be cumbersome to interface with the neural network directly, however, as a typical convergence matrix has a fixed size and training period, which limits how useful they can be to a larger, integrated system.
 
-Description
------------
+`associative_memory` simplifies these kind of machine learning models by offering dynamically configurable input and output sets, and a convergence model that adapts to the inputs you give it each time.  This allows your code to concentrate on extrapolating meaningful patterns rather than juggling bitmasks and transposition matrices.
 
-
-TODO: implement named sets for I/O layers
-
-  	# Hetero-associative
-  	# https://en.wikipedia.org/wiki/Bidirectional_Associative_Memory
-
-  	# Auto-associative
-  	# https://en.wikipedia.org/wiki/Hopfield_net
-
-  	# Other RNNs to implement
-  	# https://en.wikipedia.org/wiki/Recurrent_neural_network
-
-
-Features
---------
-
+Under the hood, `associative_memory` implements a [hetero-associative recurrent neural network](https://en.wikipedia.org/wiki/Bidirectional_Associative_Memory) designed according to [Kosko's landmark paper](http://sipi.usc.edu/~kosko/BAM.pdf) establishing the model.  The model then dynamically rebuilds and adapts this network to accomodate new inputs as necessary.
 
 Synopsis
 --------
-  
 
-Requirements
+First, you'll want to tell `associative_memory` what you know about the set of things you're dealing with:
+
+```ruby
+animals = AssociativeMemory.new
+
+animals.associate(:tail, :fur, :paws).with(:cats, :dogs)
+animals.associate(:tail, :fins, :swimming).with(:fish)
+animals.associate(:tail, :shell).with(:turtles)
+animals.associate(:arms, :legs).with(:humans)
+animals.associate(:swimming).with(:humans, :fish, :dogs, :turtles)
+animals.associate(:running).with(:humans, :dogs, :cats)
+```
+
+Once you've done that, you can start asking it questions about patterns:
+
+```ruby
+animals.describe(:humans)
+...
+
+animals.describe(:swimming)
+...
+
+animals.describe(:running)
+...
+```
+
+If you have more patterns to input, you can do it at any time:
+
+```ruby
+animals.associate(:jumping).with(:humans, :dogs, :cats)
+animals.describe(:humans)
+...
+animals.describe(:turtles)
+...
+```
+
+Turtles don't jump.
+
+Installation
 ------------
-
-
-Install
--------
 
 When using RVM:
 
@@ -53,9 +69,12 @@ Otherwise:
 
 	$ sudo gem install associative_memory
 
-Known Issues
---------------
+Resources
+---------
 
+* Support: http://dann.stayskal.com/software/associative_memory
+
+* Source code: http://github.com/danndalf/associative_memory
 
 License
 --------
