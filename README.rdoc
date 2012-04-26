@@ -8,23 +8,23 @@ This is a ruby gem that lets you implement categorization systems with ease.
 
 Associative memory neural networks make it easy to identify probable patterns between sets of named data points.  It can be cumbersome to interface with the neural network directly, however, as a typical convergence matrix has a fixed size and training period, which limits how useful they can be to an integrated system.
 
-associative_memory simplifies these kind of machine learning models by offering dynamically configurable input and output sets, and a convergence model that adapts to the inputs you give it each time.  This allows your code to concentrate on extrapolating meaningful patterns rather than juggling bitmasks and transposition matrices.
+associative_memory simplifies these kind of machine learning models by offering dynamically configurable input and output sets, and a convergence model that adapts to the inputs you give it.  This allows your code to concentrate on extrapolating meaningful patterns rather than juggling bitmasks and transposition matrices.
 
-Under the hood, associative_memory implements a hetero-associative recurrent neural network designed according to Kosko's landmark paper (http://sipi.usc.edu/~kosko/BAM.pdf) establishing the model.  The model then dynamically rebuilds and adapts this network to accomodate new inputs as necessary.
+Under the hood, associative_memory implements a hetero-associative recurrent neural network designed according to Kosko's landmark paper (http://sipi.usc.edu/~kosko/BAM.pdf) establishing the model.  The module then dynamically rebuilds and adapts this network to accomodate new inputs as they're presented.
 
 == Synopsis
 
-First, you'll want to tell `associative_memory` what you know about the set of things you're dealing with:
+First, you'll want to tell associative_memory what you know about the set of things you're dealing with:
 
   require 'associative_memory'
   @animals = AssociativeMemory.new
 
-  @animals.associate([:tail, :fur, :legs, :paws], [:cats, :rats])
-  @animals.associate([:fins, :swimming],      [:fish])
-  @animals.associate([:tail, :shell],       [:turtles])
-  @animals.associate([:arms, :legs],        [:humans])
-  @animals.associate([:swimming],         [:humans, :rats, :turtles])
-  @animals.associate([:running],          [:humans, :rats, :cats])
+  @animals.associate( [:tail, :fur, :legs, :paws], [:cats, :rats])
+  @animals.associate( [:fins, :swimming],          [:fish])
+  @animals.associate( [:tail, :shell],             [:turtles])
+  @animals.associate( [:arms, :legs],              [:humans])
+  @animals.associate( [:swimming],                 [:humans, :rats, :turtles])
+  @animals.associate( [:running],                  [:humans, :rats, :cats])
 
 Once you've done that, you can start asking it questions about patterns you've told it about:
 
@@ -34,7 +34,6 @@ Once you've done that, you can start asking it questions about patterns you've t
   end
   @animals.describe([:humans]).should == [:arms, :legs, :running, :swimming]
   @animals.describe([:swimming]).should == [:rats, :fish, :humans, :turtles]
-  @animals.describe([:tail]).should == [:cats, :rats, :fish, :turtles]
 
 Furthermore, it will be able to extrapolate patterns from data not explicitly taught:
 
@@ -65,8 +64,9 @@ Otherwise:
 
 == TODO
 
-* Implement auto-associative neural network model (v.0.3)
-* Streamline network class with Matrix rather than Array
+* Implement detailed descriptions (likelihood of set membership based on non-bitmasked transpose products with the convergence matrix) (v.0.3)
+* Streamline network class with Matrix rather than Array (v.0.4)
+* Implement auto-associative neural network model (v.0.5)
 
 == Maintenance
 
@@ -80,16 +80,16 @@ If you would like to help maintain or improve this gem, I welcome your patches. 
   $ bundle install
   $ bundle exec guard start
 
-Once guard starts, it will run through the full test suite.  After any changes are made to the libraries or specs, guard will re-run the relevant tests.  To re-run the full test suite, press enter at tie `> ` prompt in guard.  
+Once guard starts, it will run through the full test suite.  After any changes are made to the libraries or specs, guard will re-run the relevant tests.  To re-run the full test suite, press enter at the guard prompt.  
 
-After each test run, simplecov will generate a test coverage report in `coverage/index.html`.  This should show 100% coverage across all files when running the full test suite.
+After each test run, simplecov will generate a test coverage report in <code>coverage/index.html</code>.  This should show 100% coverage across all files when running the full test suite.
 
 If you would like to patch this gem:
 
 * Fork this repository
-* Write your tests
+* Write your tests (regression or unit tests)
 * Make your changes
-* Once all tests are passing and `simplecov` tells you all files are 100% covered, commit and push your changes
+* Once all tests are passing and all files have full test coverage, commit and push your changes
 * Send me a pull request
 * Wait for me to respond
 
@@ -117,7 +117,7 @@ a copy of this software and associated documentation files (the
 without limitation the rights to use, copy, modify, merge, publish,
 distribute, sublicense, and/or sell copies of the Software, and to
 permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+rthe following conditions:
 
 The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
