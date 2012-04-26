@@ -6,11 +6,9 @@ http://dann.stayskal.com/software/associative_memory
 
 This is a ruby gem that lets you implement categorization systems with ease.
 
-Associative memory neural networks make it easy to identify probable patterns between sets of named data points.  It can be cumbersome to interface with the neural network directly, however, as a typical convergence matrix has a fixed size and training period, which limits how useful they can be to an integrated system.
+Associative memory neural networks make it easy to identify probable patterns between sets of named data points.  It can be cumbersome to interface with the neural network directly, however, as a typical implementation has a fixed size and training period, which limits how useful they can be to an integrated system.
 
-associative_memory simplifies these kind of machine learning models by offering dynamically configurable input and output sets, and a convergence model that adapts to the inputs you give it.  This allows your code to concentrate on extrapolating meaningful patterns rather than juggling bitmasks and transposition matrices.
-
-Under the hood, associative_memory implements a hetero-associative recurrent neural network designed according to Kosko's landmark paper (http://sipi.usc.edu/~kosko/BAM.pdf) establishing the model.  The module then dynamically rebuilds and adapts this network to accomodate new inputs as they're presented.
+associative_memory simplifies these kind of machine learning models by offering dynamic input and output sets.  This allows your code to concentrate on extrapolating meaningful patterns rather than juggling bitmasks and transposition matrices.
 
 == Synopsis
 
@@ -69,6 +67,8 @@ Otherwise:
 * Implement auto-associative neural network model (v.0.5)
 
 == Maintenance
+
+Under the hood, associative_memory implements a hetero-associative recurrent neural network designed according to Kosko's landmark paper (http://sipi.usc.edu/~kosko/BAM.pdf) establishing the model.  The module then dynamically rebuilds and adapts this network to accomodate new inputs as they're presented.
 
 If you would like to help maintain or improve this gem, I welcome your patches. The build environment of this gem is streamlined for test-driven development using bundler, rvm, rspec, and guard.  To get it setup, you'll need to have Ruby Version Manager (http://beginrescueend.com/) installed, then do the following:
 
