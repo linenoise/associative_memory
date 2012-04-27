@@ -42,6 +42,14 @@ If you have more patterns to input, you can do it at any time:
   @animals.associate([:jumping], [:humans, :rats, :cats])
   @animals.describe([:humans]).should include(:jumping)
 
+== Requirements
+
+This gem is tested and functional on the following Ruby interpreters:
+
+* MRE Ruby 1.9.2
+* MRE Ruby 1.9.3
+* jRuby 1.9 mode
+
 == Installation
 
 When using RVM:
