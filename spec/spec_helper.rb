@@ -3,5 +3,8 @@
 require 'simplecov'
 SimpleCov.start
 
+require 'coveralls'
+Coveralls.wear!
+
 require 'associative_memory'
 require 'rspec'
