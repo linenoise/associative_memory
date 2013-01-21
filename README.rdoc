@@ -10,6 +10,12 @@ Associative memory neural networks make it easy to identify probable patterns be
 
 associative_memory simplifies these kind of machine learning models by offering dynamic input and output sets.  This allows your code to concentrate on extrapolating meaningful patterns rather than juggling bitmasks and transposition matrices.
 
+== Status
+
+{<img src="https://secure.travis-ci.org/danndalf/associative_memory.png?branch=master" alt="Build Status" />}[http://travis-ci.org/danndalf/associative_memory]
+{<img src="https://gemnasium.com/danndalf/associative_memory.png" alt="Dependency Status" />}[https://gemnasium.com/danndalf/associative_memory]
+{<img src="https://coveralls.io/repos/danndalf/associative_memory/badge.png?branch=master" alt="Test Coverage" />}[https://coveralls.io/r/danndalf/associative_memory]
+
 == Synopsis
 
 First, you'll want to tell associative_memory what you know about the set of things you're dealing with:
@@ -112,8 +118,6 @@ If you'd rather report a bug, please open an issue on github.
 * Source: http://github.com/danndalf/associative_memory
 
 * Bug Tracker: https://github.com/danndalf/associative_memory/issues
-
-* Continuous Integration: {<img src="https://secure.travis-ci.org/danndalf/associative_memory.png?branch=master" alt="Build Status" />}[http://travis-ci.org/danndalf/associative_memory]
 
 == License
 
