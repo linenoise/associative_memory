@@ -111,6 +111,8 @@ This will help me integrate your patch as quickly and reliably as possible.
 
 If you'd rather report a bug, please open an issue on github.
 
+If you're Dann and would like to release a build to RubyGems, run `rake release VERSION=x.y.z`.
+
 == Resources
 
 * Support: http://dann.stayskal.com/software/associative_memory
