@@ -9,12 +9,13 @@ GEM
       rest-client
       simplecov (>= 0.7)
       thor
-    diff-lcs (1.2.1)
-    guard (1.6.2)
+    diff-lcs (1.2.2)
+    formatador (0.2.4)
+    guard (1.7.0)
+      formatador (>= 0.2.4)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
-      terminal-table (>= 1.4.3)
       thor (>= 0.14.6)
     guard-rspec (2.5.1)
       guard (>= 1.1)
@@ -24,7 +25,7 @@ GEM
     listen (0.7.3)
     lumberjack (1.0.3)
     method_source (0.8.1)
-    mime-types (1.21)
+    mime-types (1.22)
     multi_json (1.7.2)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -46,8 +47,7 @@ GEM
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.4)
-    terminal-table (1.4.5)
-    thor (0.18.0)
+    thor (0.18.1)
 
 PLATFORMS
   ruby
