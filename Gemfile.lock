@@ -78,4 +78,5 @@ DEPENDENCIES
   hoe
   rake
   rspec
+  rspec-expectations
   simplecov (~> 0.8.2)
