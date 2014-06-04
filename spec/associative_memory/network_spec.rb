@@ -10,18 +10,18 @@ describe AssociativeMemory::Network do
 		before do
 			@network = AssociativeMemory::Network.new
 		end
-		it "should be a kind of associative memory network" do
-			@network.should be_a_kind_of(AssociativeMemory::Network)
+		it "is a kind of associative memory network" do
+			expect(@network).to be_a_kind_of(AssociativeMemory::Network)
 		end
-		it "should be empty" do
-			@network.empty?.should be_true
+		it "is empty" do
+			expect(@network.empty?).to be true
 		end
-		it "should not be valid until we learn a pattern" do
-			@network.valid?.should be_false
+		it "is not valid until it learns a pattern" do
+			expect(@network.valid?).to be false
 		end
-		it "should be valid once we learn a pattern" do
+		it "valid once it learns a pattern" do
 			@network.learn(training_data[0][:input], training_data[0][:output])
-			@network.valid?.should be_true
+			expect(@network.valid?).to be true
 		end
 	end
 
@@ -29,15 +29,15 @@ describe AssociativeMemory::Network do
 		before do
 			@network = AssociativeMemory::Network.new
 		end
-		it "should build a valid convergence matrix from a single data point" do
+		it "builds a valid convergence matrix from a single data point" do
 			@network.learn(training_data[0][:input], training_data[0][:output])
-			@network.matrix.should == [[1, 1, -1, -1], [-1, -1, 1, 1], [1, 1, -1, -1], [-1, -1, 1, 1], [1, 1, -1, -1], [-1, -1, 1, 1]]
+			expect(@network.matrix).to eq([[1, 1, -1, -1], [-1, -1, 1, 1], [1, 1, -1, -1], [-1, -1, 1, 1], [1, 1, -1, -1], [-1, -1, 1, 1]])
 		end
-		it "should build a valid convergence matrix from all data" do
+		it "builds a valid convergence matrix from all data" do
 			training_data.each do |pair|
 				@network.learn(pair[:input], pair[:output])
 			end
-			@network.matrix.should == [[1, 3, -1, -3], [-3, -1, 3, 1], [1, 3, -1, -3], [-1, -3, 1, 3], [3, 1, -3, -1], [-1, -3, 1, 3]]
+			expect(@network.matrix).to eq([[1, 3, -1, -3], [-3, -1, 3, 1], [1, 3, -1, -3], [-1, -3, 1, 3], [3, 1, -3, -1], [-1, -3, 1, 3]])
 		end
 	end
 
@@ -48,16 +48,16 @@ describe AssociativeMemory::Network do
 				@network.learn(pair[:input], pair[:output])
 			end
 		end
-		it "should rebuild all available output data from learned input data" do
+		it "rebuilds all available output data from learned input data" do
 			training_data.each do |pair|
-				@network.converge_input(pair[:input]).should == pair[:converged_output]
-				@network.converge_and_bitmask_input(pair[:input]).should == pair[:output]
+				expect(@network.converge_input(pair[:input])).to eq(pair[:converged_output])
+				expect(@network.converge_and_bitmask_input(pair[:input])).to eq(pair[:output])
 			end
 		end
-		it "should rebuild all available input data from learned output data" do
+		it "rebuilds all available input data from learned output data" do
 			training_data.each do |pair|
-				@network.converge_output(pair[:output]).should == pair[:converged_input]
-				@network.converge_and_bitmask_output(pair[:output]).should == pair[:input]
+				expect(@network.converge_output(pair[:output])).to eq(pair[:converged_input])
+				expect(@network.converge_and_bitmask_output(pair[:output])).to eq(pair[:input])
 			end
 		end
 	end

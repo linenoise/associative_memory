@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe AssociativeMemory do
 	
-	it "should have a valid version number" do
-		AssociativeMemory::VERSION.should match(/\d+\.\d+\.\d+/)
+	it "has a valid version" do
+		expect(AssociativeMemory::VERSION).to match(/\d+\.\d+\.\d+/)
 	end
 
 	describe "providing some association pairs" do
@@ -12,8 +12,8 @@ describe AssociativeMemory do
 			@animals.associate([:tail, :shell], [:turtles])
 			@animals.associate([:arms, :legs], [:humans])
 		end
-		it "should construct a valid memory" do
-			@animals.valid?.should be_true
+		it "constructs a valid memory" do
+			expect(@animals.valid?).to be true
 		end
 	end
 
@@ -27,23 +27,23 @@ describe AssociativeMemory do
 			@animals.associate([:swimming], 				[:humans, :rats, :turtles])
 			@animals.associate([:running], 					[:humans, :rats, :cats])
 		end
-		it "should reconstruct things statically trained" do
+		it "reconstructs things statically trained" do
 			running_things = @animals.describe([:running])
 			[:cats, :rats, :humans].each do |thing|
-				running_things.should include(thing)
+				expect(running_things).to include(thing)
 			end
 		end
-		it "should reconstruct things dynamically trained (over multiple learnings)" do
-			@animals.describe([:humans]).should == [:arms, :legs, :running, :swimming]
-			@animals.describe([:swimming]).should == [:fish, :humans, :rats, :turtles]
-			@animals.describe([:tail]).should == [:cats, :fish, :rats, :turtles]
+		it "reconstructs things dynamically trained (over multiple learnings)" do
+			expect(@animals.describe([:humans])).to eq([:arms, :legs, :running, :swimming])
+			expect(@animals.describe([:swimming])).to eq([:fish, :humans, :rats, :turtles])
+			expect(@animals.describe([:tail])).to eq([:cats, :fish, :rats, :turtles])
 		end
-		it "should reconstruct generalizations from things not explicitly trained" do
-			@animals.describe([:fish]).should include(:tail)
+		it "reconstructs generalizations from things not explicitly trained" do
+			expect(@animals.describe([:fish])).to include(:tail)
 		end
-		it "should dynamically re-associate patterns from existing data when further trained" do
+		it "dynamically re-associates patterns from existing data when further trained" do
 			@animals.associate([:jumping], [:humans, :rats])
-			@animals.describe([:humans]).should include(:jumping)
+			expect(@animals.describe([:humans])).to include(:jumping)
 		end
 	end
 
@@ -54,22 +54,22 @@ describe AssociativeMemory do
 			@animals.associate([:fins, :swimming], 			[:fish])
 			@inspection = @animals.pretty_inspect
 		end
-		it "should include labels of pairs, keyspaces, and the convergence network" do
-			@inspection.should match /associated_pairs/
-			@inspection.should match /input_keyspace/
-			@inspection.should match /output_keyspace/
-			@inspection.should match /convergence network/
+		it "includes labels of pairs, keyspaces, and the convergence network" do
+			expect(@inspection).to match /associated_pairs/
+			expect(@inspection).to match /input_keyspace/
+			expect(@inspection).to match /output_keyspace/
+			expect(@inspection).to match /convergence network/
 		end
-		it "should include the associative_memory object_id" do
-			@inspection.should match /associative_memory object: \d*/
+		it "includes the associative_memory object_id" do
+			expect(@inspection).to match /associative_memory object: \d*/
 		end
-		it "should include output of trained keyspaces" do
-			@inspection.should match /[:fins, :fur, :legs, :paws, :swimming, :tail]/
-			@inspection.should match /[:cats, :rats, :fish]/
+		it "includes output of trained keyspaces" do
+			expect(@inspection).to match /[:fins, :fur, :legs, :paws, :swimming, :tail]/
+			expect(@inspection).to match /[:cats, :rats, :fish]/
 		end
-		it "should include output of the convergence network" do
-			@inspection.should match /[-2, -2, 2]/
-			@inspection.should match /[2, 2, -2]/
+		it "includes output of the convergence network" do
+			expect(@inspection).to match /[-2, -2, 2]/
+			expect(@inspection).to match /[2, 2, -2]/
 		end
 	end
 end

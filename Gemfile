@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 gem "bundler"
 gem "rspec"
+gem "rspec-expectations"
 gem "rake"
 gem "hoe"
 gem "simplecov", "~> 0.8.2"
