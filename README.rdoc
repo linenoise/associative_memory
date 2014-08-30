@@ -1,6 +1,6 @@
 = Associative Memory
 
-http://dann.stayskal.com/software/associative_memory
+http://danne.stayskal.com/software/associative_memory
 
 == Description
 
@@ -115,17 +115,17 @@ If you're Dann and would like to release a build to RubyGems, run `rake release 
 
 == Resources
 
-* Support: http://dann.stayskal.com/software/associative_memory
+* Support: http://danne.stayskal.com/software/associative_memory
 
-* Source: http://github.com/danndalf/associative_memory
+* Source: http://github.com/linenoise/associative_memory
 
-* Bug Tracker: https://github.com/danndalf/associative_memory/issues
+* Bug Tracker: https://github.com/linenoise/associative_memory/issues
 
 == License
 
 This module is available under The MIT License.
 
-Copyright (c) 2012 Dann Stayskal <dann@stayskal.com>.
+Copyright (c) 2012 Danne Stayskal <danne@stayskal.com>.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
