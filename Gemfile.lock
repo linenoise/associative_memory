@@ -38,7 +38,7 @@ GEM
     lumberjack (1.0.9)
     method_source (0.8.2)
     mime-types (2.4.3)
-    multi_json (1.10.1)
+    multi_json (1.11.0)
     nenv (0.2.0)
     notiffany (0.0.6)
       nenv (~> 0.1)
