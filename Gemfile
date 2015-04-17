@@ -4,7 +4,7 @@ gem "rspec"
 gem "rspec-expectations"
 gem "rake"
 gem "hoe"
-gem "simplecov", "~> 0.8.2"
+gem "simplecov"
 gem "guard"
 gem 'guard-rspec'
 gem 'coveralls', require: false
