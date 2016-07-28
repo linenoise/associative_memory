@@ -12,9 +12,10 @@ associative_memory simplifies these kind of machine learning models by offering 
 
 == Status
 
-{<img src="https://secure.travis-ci.org/danndalf/associative_memory.png?branch=master" alt="Build Status" />}[http://travis-ci.org/danndalf/associative_memory]
-{<img src="https://gemnasium.com/danndalf/associative_memory.png" alt="Dependency Status" />}[https://gemnasium.com/danndalf/associative_memory]
-{<img src="https://coveralls.io/repos/danndalf/associative_memory/badge.png?branch=master" alt="Test Coverage" />}[https://coveralls.io/r/danndalf/associative_memory]
+{<img src="https://secure.travis-ci.org/linenoise/associative_memory.png?branch=master" alt="Build Status" />}[http://travis-ci.org/linenoise/associative_memory]
+{<img src="https://gemnasium.com/linenoise/associative_memory.png" alt="Dependency Status" />}[https://gemnasium.com/linenoise/associative_memory]
+{<img src="https://coveralls.io/repos/linenoise/associative_memory/badge.png?branch=master" alt="Test Coverage" />}[https://coveralls.io/r/linenoise/associative_memory]
+{<img src="https://www.codewake.com/badges/ask_question.svg" alt="Ask a question" />}[https://www.codewake.com/p/associative-memory]
 
 == Synopsis
 
