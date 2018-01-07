@@ -1,6 +1,6 @@
 = Associative Memory
 
-http://dann.stayskal.com/software/associative_memory
+http://danne.stayskal.com/software/associative_memory
 
 == Description
 
@@ -87,7 +87,7 @@ Under the hood, associative_memory implements a hetero-associative recurrent neu
 
 If you would like to help maintain or improve this gem, I welcome your patches. The build environment of this gem is streamlined for test-driven development using bundler, rvm, rspec, and guard.  To get it setup, you'll need to have Ruby Version Manager (http://beginrescueend.com/) installed, then do the following:
 
-  $ git clone git@github.com:danndalf/associative_memory
+  $ git clone git@github.com:linenoise/associative_memory
   $ cd associative_memory
     # ...and accept the .rvmrc
     # have RVM build ruby 1.9 if necessary
@@ -112,21 +112,22 @@ This will help me integrate your patch as quickly and reliably as possible.
 
 If you'd rather report a bug, please open an issue on github.
 
-If you're Dann and would like to release a build to RubyGems, run `rake release VERSION=x.y.z`.
+If you're Danne and would like to release a build to RubyGems, run `rake release VERSION=x.y.z`.
+
 
 == Resources
 
-* Support: http://dann.stayskal.com/software/associative_memory
+* Support: http://danne.stayskal.com/software/associative_memory
 
-* Source: http://github.com/danndalf/associative_memory
+* Source: http://github.com/linenoise/associative_memory
 
-* Bug Tracker: https://github.com/danndalf/associative_memory/issues
+* Bug Tracker: https://github.com/linenoise/associative_memory/issues
 
 == License
 
 This module is available under The MIT License.
 
-Copyright (c) 2012 Dann Stayskal <dann@stayskal.com>.
+Copyright (c) 2012 Danne Stayskal <danne@stayskal.com>.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
